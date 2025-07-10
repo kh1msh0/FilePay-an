@@ -3,106 +3,103 @@
     "filepay": "FilePay",
     "about": "About",
     "contact": "Contact",
-    "terms": "Terms",
-    "language": "Language",
-    "english": "English",
-    "spanish": "Spanish"
+    "terms": "Terms & Conditions"
   },
   "home": {
-    "badge": "Start selling in minutes",
+    "badge": "New Platform",
     "headline": "Sell digital files with a paywall link",
-    "subtext": "Upload your PDF, video, or file. Set a price. Share the link.",
+    "subtext": "Get paid to share your files — secure, fast, no storefront needed.",
     "cta": "Start Selling",
     "features": {
       "fast": {
         "title": "Fast Setup",
-        "description": "Upload your file and set a price in minutes. No complex configuration needed."
+        "description": "Upload your file and get a payment link in seconds"
       },
       "secure": {
         "title": "Secure Checkout",
-        "description": "Built-in payment processing with secure file delivery after successful payment."
+        "description": "Bank-level security for all transactions"
       },
       "instant": {
-        "title": "Instant File Delivery",
-        "description": "Customers get immediate access to their purchased files via secure download links."
+        "title": "Instant Delivery",
+        "description": "Files are delivered immediately after payment"
       }
     },
     "success": {
       "title": "Success Stories",
       "story1": {
-        "quote": "FilePay helped me sell my digital art collection effortlessly. The setup was incredibly simple!",
+        "quote": "FilePay helped me sell my digital art effortlessly. The setup was incredibly simple!",
         "name": "Sarah Chen, Digital Artist"
       },
       "story2": {
-        "quote": "I've made over $5,000 selling my photography presets through FilePay. Highly recommend!",
-        "name": "Marcus Rodriguez, Photographer"
+        "quote": "I've made over $5,000 selling my photography templates through FilePay.",
+        "name": "Mike Rodriguez, Photographer"
       },
       "story3": {
-        "quote": "The secure checkout process gives my customers confidence when purchasing my courses.",
-        "name": "Emma Thompson, Course Creator"
+        "quote": "The instant delivery feature is a game-changer for my online courses.",
+        "name": "Emma Thompson, Educator"
       }
     }
   },
   "upload": {
     "title": "Upload Your File",
-    "subtitle": "Set up your digital product and start selling",
+    "subtitle": "Fill in the details below to create your payment link",
     "form": {
-      "file": "Upload File",
-      "title": "Product Title",
-      "titlePlaceholder": "Enter product title",
-      "price": "Price in €",
-      "pricePlaceholder": "0.00",
+      "file": "Choose File",
+      "title": "File Title",
+      "titlePlaceholder": "My Amazing Digital Product",
+      "price": "Price (€)",
+      "pricePlaceholder": "9.99",
       "email": "Your Email",
-      "emailPlaceholder": "your@email.com",
+      "emailPlaceholder": "seller@example.com",
       "submit": "Generate Payment Link",
-      "generating": "Generating Link..."
+      "generating": "Generating..."
     },
     "success": {
-      "title": "Your checkout link is ready",
+      "title": "Payment Link Generated!",
       "copy": "Copy Link",
       "copied": "Copied!"
     }
   },
   "thankYou": {
     "title": "Your file is ready to download",
-    "subtitle": "Thank you for your purchase! Your download is ready.",
+    "subtitle": "Thank you for your purchase!",
     "download": "Download Now",
     "resend": "Resend Email"
   },
   "about": {
     "title": "About FilePay",
-    "mission": "FilePay is designed to make selling digital files as simple as possible. Whether you're an artist, photographer, course creator, or any digital content creator, our platform provides a seamless way to monetize your work.",
-    "story": "Built by a solo developer who understands the challenges of selling digital products online. FilePay eliminates the complexity of payment processing, file delivery, and customer management, so you can focus on creating amazing content.",
+    "mission": "FilePay makes selling digital files simple and secure. Our mission is to empower creators, entrepreneurs, and businesses to monetize their digital content without the complexity of traditional e-commerce platforms.",
+    "story": "Built by a solo dev to make selling files simple. FilePay was born from the frustration of complex e-commerce setups and the need for a straightforward solution to sell digital products. We believe that sharing your work and getting paid for it should be as easy as sending a link.",
     "values": {
       "title": "Our Values",
       "simplicity": {
         "title": "Simplicity First",
-        "description": "We believe selling digital files shouldn't require a computer science degree. Our interface is intuitive and straightforward."
+        "description": "We prioritize ease of use over complex features. Upload, price, share - that's it."
       },
       "security": {
         "title": "Security & Trust",
-        "description": "Your files and customer data are protected with enterprise-grade security measures."
+        "description": "Your files and payments are protected with enterprise-grade security measures."
       },
       "support": {
-        "title": "Creator-Focused",
-        "description": "Every feature is designed with digital creators in mind, from pricing flexibility to instant delivery."
+        "title": "Creator Support",
+        "description": "We're here to help creators succeed with responsive support and fair pricing."
       }
     }
   },
   "contact": {
-    "title": "Contact Us",
+    "title": "Get in Touch",
     "subtitle": "Have questions? We'd love to hear from you.",
     "form": {
       "name": "Full Name",
-      "namePlaceholder": "Enter your full name",
+      "namePlaceholder": "John Doe",
       "email": "Email Address",
-      "emailPlaceholder": "your@email.com",
+      "emailPlaceholder": "john@example.com",
       "message": "Message",
-      "messagePlaceholder": "Tell us how we can help...",
+      "messagePlaceholder": "Tell us how we can help you...",
       "submit": "Send Message",
       "sending": "Sending..."
     },
-    "success": "Thank you for your message! We'll get back to you soon."
+    "success": "Thank you! We'll get back to you soon."
   },
   "terms": {
     "title": "Terms & Conditions",
@@ -114,11 +111,11 @@
       },
       "description": {
         "title": "2. Service Description",
-        "content": "FilePay is a platform that enables users to sell digital files through secure payment links. We provide the infrastructure for file hosting, payment processing, and secure delivery to customers."
+        "content": "FilePay is a platform that allows users to sell digital files through secure payment links. We provide the infrastructure for file hosting, payment processing, and delivery to customers."
       },
       "userResponsibilities": {
         "title": "3. User Responsibilities",
-        "content": "Users are responsible for the content they upload and sell through our platform. All content must be legal and owned by the user. Users must not upload copyrighted material without proper authorization."
+        "content": "Users are responsible for ensuring they have the right to sell the digital content they upload. Users must not upload illegal, copyrighted, or harmful content to our platform."
       },
       "payments": {
         "title": "4. Payments and Fees",
@@ -126,11 +123,11 @@
       },
       "privacy": {
         "title": "5. Privacy Policy",
-        "content": "We respect your privacy and are committed to protecting your personal data. Our privacy policy explains how we collect, use, and protect your information when you use our service."
+        "content": "We respect your privacy and are committed to protecting your personal data. We collect only the information necessary to provide our services and never sell your data to third parties."
       },
       "termination": {
         "title": "6. Termination",
-        "content": "Either party may terminate this agreement at any time. Upon termination, your access to the service will be discontinued, and any outstanding payments will be processed according to our terms."
+        "content": "Either party may terminate this agreement at any time. Upon termination, your access to the service will be discontinued, but previously sold files will remain accessible to customers who purchased them."
       }
     }
   }

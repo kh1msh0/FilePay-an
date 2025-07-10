@@ -1,14 +1,35 @@
-import createMiddleware from "next-intl/middleware"
+import { createLocalizedPathnamesNavigation } from "next-intl/navigation"
+import { defineRouting } from "next-intl/routing"
+import type { NextRequest } from "next/server"
 
-export default createMiddleware({
-  // A list of all locales that are supported
+const routing = defineRouting({
   locales: ["en", "es"],
-
-  // Used when no locale matches
   defaultLocale: "en",
 })
 
+const { redirect, getPathname } = createLocalizedPathnamesNavigation(routing)
+
+export default function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+
+  // Check if there is any supported locale in the pathname
+  const pathnameHasLocale = routing.locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
+  )
+
+  if (pathnameHasLocale) return
+
+  // Redirect if there is no locale
+  const locale = "en" // Default locale
+  request.nextUrl.pathname = `/${locale}${pathname}`
+  return Response.redirect(request.nextUrl)
+}
+
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ["/", "/(es|en)/:path*"],
+  matcher: [
+    // Skip all internal paths (_next)
+    "/((?!_next|_vercel|.*\\..*).*)",
+    // Optional: only run on root (/) URL
+    // '/'
+  ],
 }
