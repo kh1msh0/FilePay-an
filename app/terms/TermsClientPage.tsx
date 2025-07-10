@@ -44,20 +44,6 @@ export default function TermsClientPage() {
         </div>
       </header>
 
-      {/* Back Button */}
-      <div className="container mx-auto px-4 py-6">
-        <Button
-          asChild
-          variant="ghost"
-          className="text-slate-600 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900/20 animate-slide-in-left"
-        >
-          <Link href="/">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Home
-          </Link>
-        </Button>
-      </div>
-
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16">
         <div className="text-center max-w-4xl mx-auto">
