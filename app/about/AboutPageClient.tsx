@@ -44,19 +44,6 @@ export default function AboutPageClient() {
         </div>
       </header>
 
-      {/* Back Button */}
-      <div className="container mx-auto px-4 py-6">
-        <Button
-          asChild
-          variant="ghost"
-          className="text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:hover:text-violet-300 hover:bg-violet-100 dark:hover:bg-violet-900/20 animate-slide-in-left"
-        >
-          <Link href="/">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Home
-          </Link>
-        </Button>
-      </div>
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16">
