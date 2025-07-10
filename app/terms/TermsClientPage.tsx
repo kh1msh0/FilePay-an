@@ -1,166 +1,269 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { FileText, Shield, CreditCard, Users, AlertTriangle, Mail, Scale, Lock, RefreshCw } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { FileText, User, CreditCard, Shield, AlertTriangle, Lock, RefreshCw, Scale, Mail } from "lucide-react"
 
 export default function TermsClientPage() {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return null
-  }
-
-  const sections = [
-    {
-      icon: FileText,
-      title: "1. Acceptance of Terms",
-      content: `By accessing and using FilePay, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.`,
-    },
-    {
-      icon: User,
-      title: "2. User Accounts",
-      content: `You are responsible for maintaining the confidentiality of your account and password. You agree to accept responsibility for all activities that occur under your account. FilePay reserves the right to refuse service, terminate accounts, or cancel orders at our sole discretion.`,
-    },
-    {
-      icon: CreditCard,
-      title: "3. Payment Terms",
-      content: `All payments are processed securely through our payment partners. FilePay takes a small commission from each sale. Payouts are processed according to our payout schedule. You are responsible for any taxes on your earnings.`,
-    },
-    {
-      icon: Shield,
-      title: "4. Content Policy",
-      content: `You retain ownership of your uploaded content. However, you grant FilePay a license to distribute your files to purchasers. You must own or have rights to all content you upload. Prohibited content includes illegal, harmful, or copyrighted material.`,
-    },
-    {
-      icon: AlertTriangle,
-      title: "5. Limitation of Liability",
-      content: `FilePay shall not be liable for any indirect, incidental, special, consequential, or punitive damages. Our total liability shall not exceed the amount paid by you in the twelve months preceding the claim.`,
-    },
-    {
-      icon: Lock,
-      title: "6. Privacy Policy",
-      content: `We collect and use your information as described in our Privacy Policy. We implement appropriate security measures to protect your personal information. We do not sell your personal data to third parties.`,
-    },
-    {
-      icon: RefreshCw,
-      title: "7. Changes to Terms",
-      content: `FilePay reserves the right to modify these terms at any time. We will notify users of significant changes via email or platform notifications. Continued use of the service constitutes acceptance of modified terms.`,
-    },
-    {
-      icon: Scale,
-      title: "8. Governing Law",
-      content: `These terms shall be governed by and construed in accordance with applicable laws. Any disputes shall be resolved through binding arbitration. If any provision is found unenforceable, the remainder shall remain in effect.`,
-    },
-  ]
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-zinc-50 dark:from-slate-950 dark:via-gray-950 dark:to-zinc-950">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-zinc-50 dark:from-gray-900 dark:via-slate-900/20 dark:to-zinc-900/20">
       {/* Header */}
-      <header className="border-b bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">FP</span>
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
-              FilePay
-            </span>
+      <header className="border-b border-white/20 backdrop-blur-sm bg-white/80 dark:bg-gray-900/80 animate-slide-in-left">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <Link
+            href="/"
+            className="text-2xl font-bold bg-gradient-to-r from-slate-600 to-zinc-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-200"
+          >
+            FilePay
           </Link>
-          <nav className="hidden md:flex items-center space-x-6">
-            <Link
-              href="/"
-              className="text-gray-600 dark:text-gray-300 hover:text-slate-600 dark:hover:text-slate-400 transition-colors"
-            >
-              Home
-            </Link>
-            <Link
-              href="/upload"
-              className="text-gray-600 dark:text-gray-300 hover:text-slate-600 dark:hover:text-slate-400 transition-colors"
-            >
-              Upload
-            </Link>
-            <Link
-              href="/about"
-              className="text-gray-600 dark:text-gray-300 hover:text-slate-600 dark:hover:text-slate-400 transition-colors"
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className="text-gray-600 dark:text-gray-300 hover:text-slate-600 dark:hover:text-slate-400 transition-colors"
-            >
-              Contact
-            </Link>
-            <Link href="/terms" className="text-slate-600 dark:text-slate-400 font-medium">
-              Terms
-            </Link>
-          </nav>
-          <ThemeToggle />
+          <div className="flex items-center gap-4">
+            <nav className="hidden md:flex items-center gap-6">
+              <Link
+                href="/upload"
+                className="text-gray-600 dark:text-gray-300 hover:text-slate-600 dark:hover:text-slate-400 transition-colors"
+              >
+                Upload
+              </Link>
+              <Link
+                href="/about"
+                className="text-gray-600 dark:text-gray-300 hover:text-slate-600 dark:hover:text-slate-400 transition-colors"
+              >
+                About
+              </Link>
+              <Link
+                href="/contact"
+                className="text-gray-600 dark:text-gray-300 hover:text-slate-600 dark:hover:text-slate-400 transition-colors"
+              >
+                Contact
+              </Link>
+            </nav>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-16">
         {/* Hero Section */}
-        <div className="text-center mb-16 animate-in slide-in-from-bottom-4 duration-1000">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-slate-600 via-gray-600 to-zinc-600 bg-clip-text text-transparent">
+        <div className="text-center mb-16 animate-fade-in">
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-slate-600 to-zinc-600 bg-clip-text text-transparent mb-6">
             Terms of Service
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Please read these terms carefully before using FilePay. These terms govern your use of our platform and
-            services.
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Please read these terms carefully before using FilePay. By using our service, you agree to these terms.
           </p>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">Last updated: January 2024</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">Last updated: January 10, 2025</p>
         </div>
 
-        {/* Terms Sections */}
         <div className="max-w-4xl mx-auto space-y-8">
-          {sections.map((section, index) => (
-            <Card
-              key={index}
-              className={`bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 animate-in slide-in-from-bottom-4 duration-1000`}
-              style={{ animationDelay: `${index * 100 + 300}ms` }}
-            >
-              <CardContent className="p-8">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-slate-500 to-gray-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <section.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">{section.title}</h2>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{section.content}</p>
-                  </div>
+          {/* Terms Sections */}
+          <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm animate-slide-up animate-stagger-1">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-slate-400 to-zinc-500 rounded-xl flex items-center justify-center">
+                  <FileText className="w-6 h-6 text-white" />
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                <div>
+                  <CardTitle className="text-xl text-slate-700 dark:text-slate-300">1. Acceptance of Terms</CardTitle>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="prose prose-gray dark:prose-invert max-w-none">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                By accessing and using FilePay, you accept and agree to be bound by the terms and provision of this
+                agreement. If you do not agree to abide by the above, please do not use this service. These terms apply
+                to all visitors, users, and others who access or use the service.
+              </p>
+            </CardContent>
+          </Card>
 
-        {/* Contact Section */}
-        <div className="mt-16 text-center animate-in slide-in-from-bottom-4 duration-1000 delay-1000">
-          <Card className="bg-gradient-to-r from-slate-600 to-gray-600 border-0 shadow-2xl max-w-2xl mx-auto">
-            <CardContent className="p-8">
-              <Mail className="w-12 h-12 text-white mx-auto mb-4" />
-              <h2 className="text-2xl font-bold text-white mb-4">Questions About Our Terms?</h2>
-              <p className="text-slate-100 mb-6">
+          <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm animate-slide-up animate-stagger-2">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl flex items-center justify-center">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl text-slate-700 dark:text-slate-300">2. User Accounts</CardTitle>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="prose prose-gray dark:prose-invert max-w-none">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                When you create an account with us, you must provide information that is accurate, complete, and current
+                at all times. You are responsible for safeguarding the password and for all activities that occur under
+                your account.
+              </p>
+              <ul className="text-gray-600 dark:text-gray-300 space-y-2">
+                <li>• You must be at least 18 years old to use FilePay</li>
+                <li>• One person or legal entity may not maintain more than one account</li>
+                <li>• You are responsible for maintaining the security of your account</li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm animate-slide-up animate-stagger-3">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center">
+                  <CreditCard className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl text-slate-700 dark:text-slate-300">3. Payment Terms</CardTitle>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="prose prose-gray dark:prose-invert max-w-none">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                FilePay processes payments on behalf of sellers. We charge a small transaction fee for each successful
+                sale.
+              </p>
+              <ul className="text-gray-600 dark:text-gray-300 space-y-2">
+                <li>• Transaction fee: 5% + $0.30 per successful sale</li>
+                <li>• Payments are processed within 2-7 business days</li>
+                <li>• Refunds are handled according to your refund policy</li>
+                <li>• We reserve the right to hold funds for security reviews</li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm animate-slide-up animate-stagger-4">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-violet-500 rounded-xl flex items-center justify-center">
+                  <Shield className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl text-slate-700 dark:text-slate-300">4. Content Policy</CardTitle>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="prose prose-gray dark:prose-invert max-w-none">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                You are responsible for the content you upload and sell through FilePay. Prohibited content includes:
+              </p>
+              <ul className="text-gray-600 dark:text-gray-300 space-y-2">
+                <li>• Copyrighted material you don't own</li>
+                <li>• Adult or explicit content</li>
+                <li>• Illegal or harmful content</li>
+                <li>• Malware, viruses, or malicious code</li>
+                <li>• Content that violates third-party rights</li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm animate-slide-up animate-stagger-5">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl flex items-center justify-center">
+                  <AlertTriangle className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl text-slate-700 dark:text-slate-300">
+                    5. Limitation of Liability
+                  </CardTitle>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="prose prose-gray dark:prose-invert max-w-none">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                FilePay shall not be liable for any indirect, incidental, special, consequential, or punitive damages,
+                including without limitation, loss of profits, data, use, goodwill, or other intangible losses,
+                resulting from your use of the service.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm animate-slide-up animate-stagger-6">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-xl flex items-center justify-center">
+                  <Lock className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl text-slate-700 dark:text-slate-300">6. Privacy Policy</CardTitle>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="prose prose-gray dark:prose-invert max-w-none">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                Your privacy is important to us. We collect and use your information to provide and improve our
+                services.
+              </p>
+              <ul className="text-gray-600 dark:text-gray-300 space-y-2">
+                <li>• We collect only necessary information to provide our services</li>
+                <li>• We never sell your personal data to third parties</li>
+                <li>• We use industry-standard security measures</li>
+                <li>• You can request deletion of your data at any time</li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm animate-slide-up animate-stagger-7">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-pink-400 to-rose-500 rounded-xl flex items-center justify-center">
+                  <RefreshCw className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl text-slate-700 dark:text-slate-300">7. Changes to Terms</CardTitle>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="prose prose-gray dark:prose-invert max-w-none">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                We reserve the right to modify or replace these terms at any time. If a revision is material, we will
+                try to provide at least 30 days notice prior to any new terms taking effect.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm animate-slide-up animate-stagger-8">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-xl flex items-center justify-center">
+                  <Scale className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl text-slate-700 dark:text-slate-300">8. Governing Law</CardTitle>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="prose prose-gray dark:prose-invert max-w-none">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                These terms shall be interpreted and governed by the laws of the State of California, United States,
+                without regard to its conflict of law provisions.
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Contact Section */}
+          <Card className="border-0 shadow-2xl bg-gradient-to-r from-slate-500/10 to-zinc-500/10 dark:from-slate-500/20 dark:to-zinc-500/20 backdrop-blur-sm animate-glow">
+            <CardContent className="py-12 text-center">
+              <div className="mx-auto w-16 h-16 bg-gradient-to-br from-slate-400 to-zinc-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <Mail className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-slate-600 to-zinc-600 bg-clip-text text-transparent">
+                Questions About These Terms?
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
                 If you have any questions about these Terms of Service, please don't hesitate to contact us.
               </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center px-6 py-3 bg-white text-slate-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+              <Button
+                asChild
+                size="lg"
+                className="bg-gradient-to-r from-slate-500 to-zinc-500 hover:from-slate-600 hover:to-zinc-600 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
-                Contact Support
-              </Link>
+                <Link href="/contact">
+                  <Mail className="w-4 h-4 mr-2" />
+                  Contact Support
+                </Link>
+              </Button>
             </CardContent>
           </Card>
         </div>
-      </main>
+      </div>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Upload, Shield, Zap, Sparkles } from "lucide-react"
+import { Upload, Shield, Zap, Sparkles, Quote } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function HomePage() {
@@ -104,24 +104,80 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Success Stories Section */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-blue-800 dark:from-white dark:to-blue-200 bg-clip-text text-transparent">
+            Success Stories
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            See how creators are using FilePay to monetize their digital content
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-yellow-50 to-orange-100 dark:from-yellow-900/20 dark:to-orange-900/20 hover:shadow-xl transition-all duration-300 animate-slide-up animate-stagger-1 opacity-0">
+            <CardHeader>
+              <Quote className="w-8 h-8 text-yellow-600 dark:text-yellow-400 mb-2" />
+            </CardHeader>
+            <CardContent>
+              <blockquote className="text-gray-700 dark:text-gray-300 mb-4 italic">
+                "FilePay helped me sell my digital art effortlessly. I've made over $2,000 in my first month!"
+              </blockquote>
+              <cite className="text-sm font-semibold text-yellow-700 dark:text-yellow-300">
+                Sarah Chen, Digital Artist
+              </cite>
+            </CardContent>
+          </Card>
+
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-pink-50 to-rose-100 dark:from-pink-900/20 dark:to-rose-900/20 hover:shadow-xl transition-all duration-300 animate-slide-up animate-stagger-2 opacity-0">
+            <CardHeader>
+              <Quote className="w-8 h-8 text-pink-600 dark:text-pink-400 mb-2" />
+            </CardHeader>
+            <CardContent>
+              <blockquote className="text-gray-700 dark:text-gray-300 mb-4 italic">
+                "The setup was incredibly simple. I uploaded my photography templates and started earning immediately."
+              </blockquote>
+              <cite className="text-sm font-semibold text-pink-700 dark:text-pink-300">
+                Mike Rodriguez, Photographer
+              </cite>
+            </CardContent>
+          </Card>
+
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-indigo-50 to-purple-100 dark:from-indigo-900/20 dark:to-purple-900/20 hover:shadow-xl transition-all duration-300 animate-slide-up animate-stagger-3 opacity-0">
+            <CardHeader>
+              <Quote className="w-8 h-8 text-indigo-600 dark:text-indigo-400 mb-2" />
+            </CardHeader>
+            <CardContent>
+              <blockquote className="text-gray-700 dark:text-gray-300 mb-4 italic">
+                "Perfect for selling my online courses. The instant delivery feature is exactly what I needed."
+              </blockquote>
+              <cite className="text-sm font-semibold text-indigo-700 dark:text-indigo-300">
+                Emma Thompson, Educator
+              </cite>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="border-t border-white/20 mt-16 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm animate-fade-in animate-stagger-5 opacity-0">
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
             <Link
-              href="#"
+              href="/about"
               className="hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
             >
               About
             </Link>
             <Link
-              href="#"
+              href="/contact"
               className="hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
             >
               Contact
             </Link>
             <Link
-              href="#"
+              href="/terms"
               className="hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
             >
               Terms
