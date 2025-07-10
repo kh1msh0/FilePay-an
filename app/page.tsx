@@ -16,7 +16,27 @@ export default function HomePage() {
           >
             FilePay
           </Link>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
+            <nav className="hidden md:flex items-center gap-6">
+              <Link
+                href="/about"
+                className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+              >
+                About
+              </Link>
+              <Link
+                href="/contact"
+                className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+              >
+                Contact
+              </Link>
+              <Link
+                href="/terms"
+                className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+              >
+                Terms
+              </Link>
+            </nav>
             <ThemeToggle />
           </div>
         </div>
@@ -159,32 +179,6 @@ export default function HomePage() {
           </Card>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t border-white/20 mt-16 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm animate-fade-in animate-stagger-5 opacity-0">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
-            <Link
-              href="/about"
-              className="hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className="hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
-            >
-              Contact
-            </Link>
-            <Link
-              href="/terms"
-              className="hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
-            >
-              Terms
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
