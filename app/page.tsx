@@ -3,6 +3,59 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Upload, Shield, Zap, Sparkles, Quote } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Sell digital files instantly with FilePay",
+  description:
+    "Get paid to share your files — secure, fast, no storefront needed. Upload your PDF, video, or file. Set a price. Share the link.",
+  keywords: [
+    "sell digital files",
+    "digital marketplace",
+    "file selling platform",
+    "instant payments",
+    "secure file sharing",
+    "digital downloads",
+    "creator economy",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    title: "Sell digital files instantly with FilePay",
+    description: "Get paid to share your files — secure, fast, no storefront needed.",
+    url: "https://filepay.app",
+    siteName: "FilePay",
+    images: [
+      {
+        url: "https://filepay.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "FilePay - Sell digital files instantly",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sell digital files instantly with FilePay",
+    description: "Get paid to share your files — secure, fast, no storefront needed.",
+    images: ["https://filepay.app/og-image.png"],
+    creator: "@filepay",
+  },
+  alternates: {
+    canonical: "https://filepay.app",
+  },
+}
 
 export default function HomePage() {
   return (

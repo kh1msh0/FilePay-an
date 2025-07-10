@@ -2,10 +2,17 @@ import type { Metadata } from "next"
 import ContactPageClient from "./ContactPageClient"
 
 export const metadata: Metadata = {
-  title: "Contact FilePay - Get Support & Connect With Us",
+  title: "Contact FilePay Support - Get Help & Connect",
   description:
-    "Need help with FilePay? Contact our support team or reach out with questions about selling digital files.",
-  keywords: ["contact filepay", "customer support", "help", "digital file selling support"],
+    "Need help with FilePay? Contact our support team for assistance with selling digital files, payments, or technical questions. We're here to help.",
+  keywords: [
+    "contact filepay",
+    "customer support",
+    "help center",
+    "digital file selling support",
+    "payment help",
+    "technical support",
+  ],
   robots: {
     index: true,
     follow: true,
@@ -18,9 +25,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Contact FilePay - Get Support & Connect With Us",
+    title: "Contact FilePay Support - Get Help & Connect",
     description:
-      "Need help with FilePay? Contact our support team or reach out with questions about selling digital files.",
+      "Need help with FilePay? Contact our support team for assistance with selling digital files, payments, or technical questions.",
     url: "https://filepay.app/contact",
     siteName: "FilePay",
     images: [
@@ -28,7 +35,7 @@ export const metadata: Metadata = {
         url: "https://filepay.app/og-contact.png",
         width: 1200,
         height: 630,
-        alt: "Contact FilePay",
+        alt: "Contact FilePay Support",
       },
     ],
     locale: "en_US",
@@ -36,9 +43,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact FilePay - Get Support & Connect With Us",
+    title: "Contact FilePay Support - Get Help & Connect",
     description:
-      "Need help with FilePay? Contact our support team or reach out with questions about selling digital files.",
+      "Need help with FilePay? Contact our support team for assistance with selling digital files, payments, or technical questions.",
     images: ["https://filepay.app/og-contact.png"],
     creator: "@filepay",
   },

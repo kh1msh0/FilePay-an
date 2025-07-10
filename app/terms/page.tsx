@@ -2,9 +2,17 @@ import type { Metadata } from "next"
 import TermsClientPage from "./TermsClientPage"
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions - FilePay Legal Information",
-  description: "Read FilePay's terms of service, privacy policy, and legal information for selling digital files.",
-  keywords: ["filepay terms", "terms of service", "privacy policy", "legal", "digital file selling terms"],
+  title: "Terms of Service & Privacy Policy | FilePay",
+  description:
+    "Read FilePay's terms of service, privacy policy, and legal information for selling digital files. Understand our policies and user agreements.",
+  keywords: [
+    "filepay terms",
+    "terms of service",
+    "privacy policy",
+    "legal information",
+    "digital file selling terms",
+    "user agreement",
+  ],
   robots: {
     index: true,
     follow: true,
@@ -17,7 +25,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Terms & Conditions - FilePay Legal Information",
+    title: "Terms of Service & Privacy Policy | FilePay",
     description: "Read FilePay's terms of service, privacy policy, and legal information for selling digital files.",
     url: "https://filepay.app/terms",
     siteName: "FilePay",
@@ -26,7 +34,7 @@ export const metadata: Metadata = {
         url: "https://filepay.app/og-terms.png",
         width: 1200,
         height: 630,
-        alt: "FilePay Terms & Conditions",
+        alt: "FilePay Terms of Service",
       },
     ],
     locale: "en_US",
@@ -34,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Terms & Conditions - FilePay Legal Information",
+    title: "Terms of Service & Privacy Policy | FilePay",
     description: "Read FilePay's terms of service, privacy policy, and legal information for selling digital files.",
     images: ["https://filepay.app/og-terms.png"],
     creator: "@filepay",

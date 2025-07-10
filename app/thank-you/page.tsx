@@ -3,6 +3,47 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Download, Mail, CheckCircle, Sparkles } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Download Complete | FilePay",
+  description: "Your digital file purchase is complete. Download your file securely and instantly with FilePay.",
+  keywords: ["download complete", "file download", "digital purchase", "secure download", "instant access"],
+  robots: {
+    index: false,
+    follow: true,
+    googleBot: {
+      index: false,
+      follow: true,
+    },
+  },
+  openGraph: {
+    title: "Download Complete | FilePay",
+    description: "Your digital file purchase is complete. Download your file securely and instantly with FilePay.",
+    url: "https://filepay.app/thank-you",
+    siteName: "FilePay",
+    images: [
+      {
+        url: "https://filepay.app/og-thankyou.png",
+        width: 1200,
+        height: 630,
+        alt: "FilePay - Download Complete",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Download Complete | FilePay",
+    description: "Your digital file purchase is complete. Download your file securely and instantly with FilePay.",
+    images: ["https://filepay.app/og-thankyou.png"],
+    creator: "@filepay",
+  },
+  alternates: {
+    canonical: "https://filepay.app/thank-you",
+  },
+}
 
 export default function ThankYouPage() {
   return (

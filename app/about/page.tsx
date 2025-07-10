@@ -2,10 +2,17 @@ import type { Metadata } from "next"
 import AboutPageClient from "./AboutPageClient"
 
 export const metadata: Metadata = {
-  title: "About FilePay - Our Mission to Empower Digital Creators",
+  title: "About FilePay - Empowering Digital Creators",
   description:
-    "Learn about FilePay's mission to make selling digital files simple, secure, and profitable for creators worldwide.",
-  keywords: ["about filepay", "digital creator platform", "file selling mission", "creator economy"],
+    "Learn about FilePay's mission to make selling digital files simple, secure, and profitable for creators worldwide. Join thousands of successful creators.",
+  keywords: [
+    "about filepay",
+    "digital creator platform",
+    "file selling mission",
+    "creator economy",
+    "digital marketplace story",
+    "secure file sharing",
+  ],
   robots: {
     index: true,
     follow: true,
@@ -18,7 +25,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "About FilePay - Our Mission to Empower Digital Creators",
+    title: "About FilePay - Empowering Digital Creators",
     description:
       "Learn about FilePay's mission to make selling digital files simple, secure, and profitable for creators worldwide.",
     url: "https://filepay.app/about",
@@ -28,7 +35,7 @@ export const metadata: Metadata = {
         url: "https://filepay.app/og-about.png",
         width: 1200,
         height: 630,
-        alt: "About FilePay",
+        alt: "About FilePay - Our Story",
       },
     ],
     locale: "en_US",
@@ -36,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About FilePay - Our Mission to Empower Digital Creators",
+    title: "About FilePay - Empowering Digital Creators",
     description:
       "Learn about FilePay's mission to make selling digital files simple, secure, and profitable for creators worldwide.",
     images: ["https://filepay.app/og-about.png"],
