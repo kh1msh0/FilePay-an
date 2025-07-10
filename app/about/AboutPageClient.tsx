@@ -3,8 +3,9 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowLeft, Target, Heart, Shield, Users } from "lucide-react"
+import { Target, Heart, Shield, Users } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { Footer } from "@/components/footer"
 
 export default function AboutPageClient() {
   return (
@@ -27,6 +28,12 @@ export default function AboutPageClient() {
                 About
               </Link>
               <Link
+                href="/pricing"
+                className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-200"
+              >
+                Pricing
+              </Link>
+              <Link
                 href="/contact"
                 className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-200"
               >
@@ -43,7 +50,6 @@ export default function AboutPageClient() {
           </div>
         </div>
       </header>
-
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16">
@@ -216,6 +222,8 @@ export default function AboutPageClient() {
           </Button>
         </div>
       </section>
+
+      <Footer />
     </div>
   )
 }

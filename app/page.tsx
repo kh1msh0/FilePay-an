@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Upload, Shield, Zap, Sparkles, Quote } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -76,6 +77,12 @@ export default function HomePage() {
                 className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
               >
                 About
+              </Link>
+              <Link
+                href="/pricing"
+                className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+              >
+                Pricing
               </Link>
               <Link
                 href="/contact"
@@ -232,6 +239,8 @@ export default function HomePage() {
           </Card>
         </div>
       </section>
+
+      <Footer />
     </div>
   )
 }
