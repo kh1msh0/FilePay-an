@@ -11,7 +11,7 @@ import { Footer } from "@/components/footer"
 export default function PricingPageClient() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-gray-900 dark:via-emerald-900/20 dark:to-teal-900/20">
-      {/* Header */}
+      {/* Header needs to be fixed */}
       <header className="border-b border-white/20 backdrop-blur-sm bg-white/80 dark:bg-gray-900/80 animate-slide-in-left">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link
