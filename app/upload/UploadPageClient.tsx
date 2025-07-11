@@ -14,7 +14,7 @@ export default function UploadPageClient() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
-    file: null,
+    file: null as File | null,
     title: "",
     price: "",
     email: "",
@@ -22,7 +22,7 @@ export default function UploadPageClient() {
   const [copied, setCopied] = useState(false)
   const [fileError, setFileError] = useState("")
   const [priceError, setPriceError] = useState("")
-  const [uploadProgress, setUploadProgress] = useState(30)
+  const [uploadProgress, setUploadProgress] = useState(0)
   const [showProgress, setShowProgress] = useState(false)
   const [previewLink, setPreviewLink] = useState("")
 
@@ -31,13 +31,15 @@ export default function UploadPageClient() {
   const validateFile = (file: File) => {
     const maxSize = 100 * 1024 * 1024 // 100MB in bytes
     const allowedTypes = ["application/pdf", "video/mp4", "application/zip", "application/x-zip-compressed"]
+    const allowedExtensions = [".pdf", ".mp4", ".zip"]
 
     if (file.size > maxSize) {
-      return "File must be no larger than 100MB."
+      return "File must be a PDF, MP4, or ZIP and no larger than 100MB."
     }
 
-    if (!allowedTypes.includes(file.type)) {
-      return "File must be a PDF, MP4, or ZIP."
+    const fileExtension = file.name.toLowerCase().substring(file.name.lastIndexOf("."))
+    if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(fileExtension)) {
+      return "File must be a PDF, MP4, or ZIP and no larger than 100MB."
     }
 
     return ""
@@ -78,27 +80,34 @@ export default function UploadPageClient() {
     setIsSubmitted(true)
   }
 
-  const handleInputChange = (field: string, value: string | File) => {
-    if (field === "file" && value instanceof File) {
-      const error = validateFile(value)
-      setFileError(error)
-      setFormData((prev) => ({ ...prev, [field]: value }))
-    } else {
-      setFormData((prev) => ({ ...prev, [field]: value }))
-
-      // Generate preview link when both file and price are set
-      if (field === "price" && value && formData.file) {
-        setPreviewLink(`https://filepay.io/paywall/placeholder`)
-      } else if (field === "file" && value && formData.price) {
-        setPreviewLink(`https://filepay.io/paywall/placeholder`)
-      }
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(checkoutLink)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error("Failed to copy link")
     }
   }
 
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(checkoutLink)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+  const handleInputChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }))
+
+    // Generate preview link when both file and price are set
+    if (field === "price" && value && formData.file) {
+      setPreviewLink("https://filepay.io/paywall/placeholder")
+    }
+  }
+
+  const handleFileChange = (file: File) => {
+    const error = validateFile(file)
+    setFileError(error)
+    setFormData((prev) => ({ ...prev, file }))
+
+    // Generate preview link when both file and price are set
+    if (formData.price && !error) {
+      setPreviewLink("https://filepay.io/paywall/placeholder")
+    }
   }
 
   return (
@@ -148,12 +157,12 @@ export default function UploadPageClient() {
                       onChange={(e) => {
                         const file = e.target.files?.[0]
                         if (file) {
-                          handleInputChange("file", file)
+                          handleFileChange(file)
                         }
                       }}
                     />
+                    {fileError && <p className="text-sm text-red-600 dark:text-red-400 animate-fade-in">{fileError}</p>}
                   </div>
-                  {fileError && <p className="text-sm text-red-600 dark:text-red-400 animate-fade-in">{fileError}</p>}
 
                   <div className="space-y-2 animate-slide-up animate-stagger-2 opacity-0">
                     <Label htmlFor="title" className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
@@ -187,8 +196,11 @@ export default function UploadPageClient() {
                       onChange={(e) => handleInputChange("price", e.target.value)}
                       className="border-green-200 dark:border-green-800 focus:border-green-500 dark:focus:border-green-400 transition-all duration-300 hover:shadow-md focus:scale-105"
                     />
+                    {priceError && (
+                      <p className="text-sm text-red-600 dark:text-red-400 animate-fade-in">{priceError}</p>
+                    )}
                   </div>
-                  {priceError && <p className="text-sm text-red-600 dark:text-red-400 animate-fade-in">{priceError}</p>}
+
                   {previewLink && (
                     <div className="space-y-2 animate-slide-up">
                       <Label className="text-gray-700 dark:text-gray-300">Preview Link</Label>
@@ -248,6 +260,7 @@ export default function UploadPageClient() {
                       </>
                     )}
                   </Button>
+
                   <p className="text-center text-sm text-gray-500 dark:text-gray-400 animate-fade-in">
                     Secure payments powered by Lemon Squeezy
                   </p>
@@ -289,6 +302,8 @@ export default function UploadPageClient() {
             </Card>
           )}
         </div>
+
+        {/* Powered by FilePay Badge */}
         <div className="text-center mt-8">
           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
             Powered by FilePay
