@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Copy, CheckCircle, Upload, Euro, Mail, FileText, Loader2 } from "lucide-react"
+import { Copy, CheckCircle, Upload, Euro, Mail, FileText, Loader2, ImageIcon } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function UploadPageClient() {
@@ -15,12 +15,14 @@ export default function UploadPageClient() {
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     file: null as File | null,
+    previewFile: null as File | null,
     title: "",
     price: "",
     email: "",
   })
   const [copied, setCopied] = useState(false)
   const [fileError, setFileError] = useState("")
+  const [previewFileError, setPreviewFileError] = useState("")
   const [priceError, setPriceError] = useState("")
   const [uploadProgress, setUploadProgress] = useState(0)
   const [showProgress, setShowProgress] = useState(false)
@@ -45,12 +47,30 @@ export default function UploadPageClient() {
     return ""
   }
 
+  const validatePreviewFile = (file: File) => {
+    const maxSize = 10 * 1024 * 1024 // 10MB in bytes
+    const allowedTypes = ["image/jpeg", "image/png", "image/gif", "application/pdf"]
+    const allowedExtensions = [".jpg", ".jpeg", ".png", ".gif", ".pdf"]
+
+    if (file.size > maxSize) {
+      return "Preview file must be no larger than 10MB."
+    }
+
+    const fileExtension = file.name.toLowerCase().substring(file.name.lastIndexOf("."))
+    if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(fileExtension)) {
+      return "Preview file must be an image (JPG, PNG, GIF) or PDF."
+    }
+
+    return ""
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     // Reset errors
     setFileError("")
     setPriceError("")
+    setPreviewFileError("")
 
     // Validate form
     if (!formData.file) {
@@ -110,6 +130,12 @@ export default function UploadPageClient() {
     }
   }
 
+  const handlePreviewFileChange = (file: File) => {
+    const error = validatePreviewFile(file)
+    setPreviewFileError(error)
+    setFormData((prev) => ({ ...prev, previewFile: file }))
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-pink-50 dark:from-gray-900 dark:via-orange-900/20 dark:to-pink-900/20">
       {/* Header */}
@@ -162,6 +188,31 @@ export default function UploadPageClient() {
                       }}
                     />
                     {fileError && <p className="text-sm text-red-600 dark:text-red-400 animate-fade-in">{fileError}</p>}
+                  </div>
+
+                  <div className="space-y-2 animate-slide-up animate-stagger-1-5 opacity-0">
+                    <Label htmlFor="previewFile" className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                      <ImageIcon className="w-4 h-4 text-pink-500" />
+                      Preview File (Optional)
+                    </Label>
+                    <Input
+                      id="previewFile"
+                      type="file"
+                      accept="image/*,.pdf"
+                      className="cursor-pointer border-pink-200 dark:border-pink-800 focus:border-pink-500 dark:focus:border-pink-400 transition-all duration-300 hover:shadow-md"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0]
+                        if (file) {
+                          handlePreviewFileChange(file)
+                        }
+                      }}
+                    />
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      Upload an image or PDF preview for customers (max 10MB)
+                    </p>
+                    {previewFileError && (
+                      <p className="text-sm text-red-600 dark:text-red-400 animate-fade-in">{previewFileError}</p>
+                    )}
                   </div>
 
                   <div className="space-y-2 animate-slide-up animate-stagger-2 opacity-0">
