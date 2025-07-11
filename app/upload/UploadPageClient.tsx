@@ -22,7 +22,7 @@ export default function UploadPageClient() {
   const [copied, setCopied] = useState(false)
   const [fileError, setFileError] = useState("")
   const [priceError, setPriceError] = useState("")
-  const [uploadProgress, setUploadProgress] = useState(0)
+  const [uploadProgress, setUploadProgress] = useState(30)
   const [showProgress, setShowProgress] = useState(false)
   const [previewLink, setPreviewLink] = useState("")
 
