@@ -20,32 +20,85 @@ export default function UploadPageClient() {
     email: "",
   })
   const [copied, setCopied] = useState(false)
+  const [fileError, setFileError] = useState("")
+  const [priceError, setPriceError] = useState("")
+  const [uploadProgress, setUploadProgress] = useState(0)
+  const [showProgress, setShowProgress] = useState(false)
+  const [previewLink, setPreviewLink] = useState("")
 
   const checkoutLink = "https://filepay.app/checkout/abc123"
 
+  const validateFile = (file: File) => {
+    const maxSize = 100 * 1024 * 1024 // 100MB in bytes
+    const allowedTypes = ["application/pdf", "video/mp4", "application/zip", "application/x-zip-compressed"]
+
+    if (file.size > maxSize) {
+      return "File must be no larger than 100MB."
+    }
+
+    if (!allowedTypes.includes(file.type)) {
+      return "File must be a PDF, MP4, or ZIP."
+    }
+
+    return ""
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    // Reset errors
+    setFileError("")
+    setPriceError("")
+
+    // Validate form
+    if (!formData.file) {
+      setFileError("Please upload a file before proceeding.")
+      return
+    }
+
+    if (!formData.price) {
+      setPriceError("Please set a price before proceeding.")
+      return
+    }
+
     setIsLoading(true)
+    setShowProgress(true)
+
+    // Simulate upload progress
+    for (let i = 0; i <= 100; i += 10) {
+      setUploadProgress(i)
+      await new Promise((resolve) => setTimeout(resolve, 100))
+    }
 
     // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    await new Promise((resolve) => setTimeout(resolve, 500))
 
     setIsLoading(false)
+    setShowProgress(false)
     setIsSubmitted(true)
   }
 
-  const handleCopyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(checkoutLink)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    } catch (err) {
-      console.error("Failed to copy link")
+  const handleInputChange = (field: string, value: string | File) => {
+    if (field === "file" && value instanceof File) {
+      const error = validateFile(value)
+      setFileError(error)
+      setFormData((prev) => ({ ...prev, [field]: value }))
+    } else {
+      setFormData((prev) => ({ ...prev, [field]: value }))
+
+      // Generate preview link when both file and price are set
+      if (field === "price" && value && formData.file) {
+        setPreviewLink(`https://filepay.io/paywall/placeholder`)
+      } else if (field === "file" && value && formData.price) {
+        setPreviewLink(`https://filepay.io/paywall/placeholder`)
+      }
     }
   }
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(checkoutLink)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   return (
@@ -92,9 +145,15 @@ export default function UploadPageClient() {
                       type="file"
                       required
                       className="cursor-pointer border-orange-200 dark:border-orange-800 focus:border-orange-500 dark:focus:border-orange-400 transition-all duration-300 hover:shadow-md"
-                      onChange={(e) => handleInputChange("file", e.target.value)}
+                      onChange={(e) => {
+                        const file = e.target.files?.[0]
+                        if (file) {
+                          handleInputChange("file", file)
+                        }
+                      }}
                     />
                   </div>
+                  {fileError && <p className="text-sm text-red-600 dark:text-red-400 animate-fade-in">{fileError}</p>}
 
                   <div className="space-y-2 animate-slide-up animate-stagger-2 opacity-0">
                     <Label htmlFor="title" className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
@@ -129,6 +188,17 @@ export default function UploadPageClient() {
                       className="border-green-200 dark:border-green-800 focus:border-green-500 dark:focus:border-green-400 transition-all duration-300 hover:shadow-md focus:scale-105"
                     />
                   </div>
+                  {priceError && <p className="text-sm text-red-600 dark:text-red-400 animate-fade-in">{priceError}</p>}
+                  {previewLink && (
+                    <div className="space-y-2 animate-slide-up">
+                      <Label className="text-gray-700 dark:text-gray-300">Preview Link</Label>
+                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                        <p className="text-sm font-mono text-blue-700 dark:text-blue-300 break-all cursor-pointer hover:underline">
+                          {previewLink}
+                        </p>
+                      </div>
+                    </div>
+                  )}
 
                   <div className="space-y-2 animate-slide-up animate-stagger-4 opacity-0">
                     <Label htmlFor="email" className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
@@ -145,6 +215,21 @@ export default function UploadPageClient() {
                       className="border-purple-200 dark:border-purple-800 focus:border-purple-500 dark:focus:border-purple-400 transition-all duration-300 hover:shadow-md focus:scale-105"
                     />
                   </div>
+
+                  {showProgress && (
+                    <div className="space-y-2 animate-slide-up">
+                      <div className="flex justify-between text-sm text-gray-600 dark:text-gray-300">
+                        <span>Uploading...</span>
+                        <span>{uploadProgress}%</span>
+                      </div>
+                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                        <div
+                          className="bg-gradient-to-r from-orange-500 to-pink-500 h-2 rounded-full transition-all duration-300"
+                          style={{ width: `${uploadProgress}%` }}
+                        />
+                      </div>
+                    </div>
+                  )}
 
                   <Button
                     type="submit"
@@ -163,6 +248,9 @@ export default function UploadPageClient() {
                       </>
                     )}
                   </Button>
+                  <p className="text-center text-sm text-gray-500 dark:text-gray-400 animate-fade-in">
+                    Secure payments powered by Lemon Squeezy
+                  </p>
                 </form>
               </CardContent>
             </Card>
@@ -200,6 +288,11 @@ export default function UploadPageClient() {
               </CardContent>
             </Card>
           )}
+        </div>
+        <div className="text-center mt-8">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
+            Powered by FilePay
+          </span>
         </div>
       </div>
     </div>
